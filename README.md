@@ -2,6 +2,8 @@ WK-FireScript
 
 FiveM Firescript for vRP for now
 
+Remember to add "wk.fire" in groups
+
 also has one for [Stand Alone]
 
 
