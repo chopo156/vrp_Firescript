@@ -1,6 +1,6 @@
 WK-FireScript
 
-Fivem Firescript for vRP for now
+FiveM Firescript for vRP for now
 
 also has one for [Stand Alone]
 
