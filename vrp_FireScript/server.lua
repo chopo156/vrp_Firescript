@@ -3,7 +3,7 @@ local Proxy = module("vrp", "lib/Proxy")
 
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP","vRP_fire")
-
+-------------------------------------------------------------
 -- x, y, z, maxFlames, maxRange
 
 local randomFireLocations = {
@@ -15,18 +15,18 @@ local randomFireLocations = {
 }
 
 local timerSpawn = math.random(1800000, 2400000) -- every 30 minutes (1800000, 2400000)
-local timerDespawn = math.random(2000000, 2500000) -- every 35 minutes (or so)
+local timerDespawn = math.random(2000000, 2500000) -- every 35 minutes (2000000, 2500000)
 
 Citizen.CreateThread(function()
 	local user_id = vRP.getUserId({source})
-	local Firefighter = vRP.getUsersByPermission({"wk.fire"})
+	local Firefighter = vRP.getUsersByPermission({"wk.fire"}) -- ADD wk.fire in your groups.lua
 	local pompieri = {}
 
     while true do
         Wait(0)
         if #Firefighter > 0 then
             Citizen.Wait(timerSpawn)
-			local index = math.random(1, 5) -- Remember to add it too
+			local index = math.random(1, 5)
             TriggerClientEvent('FireScript:StartFireAtPosition', -1, randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z, randomFireLocations[index].maxFlames, randomFireLocations[index].maxRange)
             for fired, v in pairs(Firefighter) do
                 local u_source = vRP.getUserSource({fired})
@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 
             Citizen.Wait(timerDespawn)
 			TriggerClientEvent('FireScript:RemoveFireAtPosition', -1, randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z)
-			TriggerClientEvent('WK:RemoveBlip', 436, 1, "Fire1", randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z)
+			TriggerClientEvent('WK:RemoveBlip', 436, 1, "Fire!", randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z)
         end
     end
 end)
@@ -52,3 +52,6 @@ RegisterServerEvent("WK:syncedAlarm")
 AddEventHandler("WK:syncedAlarm", function()
   TriggerClientEvent("triggerSound", source)
 end)
+--------------------------------------------------
+print("Fire Script has loaded! Coded by Wick")
+--------------------------------------------------

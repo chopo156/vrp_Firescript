@@ -1,24 +1,8 @@
----------------------made by Wick------------------------------------------------
-
-local skins = {
-    "S_M_Y_Fireman_01",
-}
-
+---------------------made by Wick under TEST---------------------------------------
 local weapons = {
     "WEAPON_FIREEXTINGUISHER",
 }
 ----------------------------------------------------------------------------------
---[[
-function isPedAllowed()
-    local ped = GetPlayerPed(-1)
-    for i=1, #skins do
-        if GetHashKey(skins[i]) == GetEntityModel(ped) then
-            return true
-        end
-    end
-    return false
-end
-]]
 function CheckWeapon(ped)
 	local ped = GetPlayerPed(-1)
     for i = 1, #weapons do

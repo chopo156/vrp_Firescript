@@ -51,7 +51,7 @@ AddEventHandler("triggerSound", function()
     Wait(2000)
   end
 end)
-
+------------------------------------------------------------
 
 function IconNotif(sprite, style, contact, title, text)
     SetNotificationTextEntry("STRING")
@@ -70,7 +70,7 @@ function addBlip(name, id, color, text, x, y, z)
     AddTextComponentString(text)
     EndTextCommandSetBlipName(name)
 	 while transM ~= 0 do
-        Wait(3000) -- her øger eller mindskes tiden, hvor blip vises
+        Wait(3000) -- hers increases or decreases the time the blip appears
         transM = transM - 1
         SetBlipAlpha(name, transM)
     end
@@ -93,12 +93,13 @@ RegisterNetEvent('WK:CreateBlip')
 AddEventHandler('WK:CreateBlip', function(x, y, z)
 	TriggerServerEvent("WK:syncedAlarm") -- Starts fire alarm
 	TriggerServerEvent("Fire-EMS-Pager:PageTones", {"fire"}, false) -- add PageTones {"medical", "rescue", "fire", "other"}
-	IconNotif("CHAR_CALL911", 4, "Rapporter til stationen", "Vi har identificeret en brand!")
-    addBlip(nil, 436, 1, "Fire1", x, y, z)
+	--IconNotif("CHAR_CALL911", 4, "Rapporter til stationen", "Vi har identificeret en brand!") -- Danish
+	IconNotif("CHAR_CALL911", 4, "Reports to the station", "We have identified a fire!") -- English
+    addBlip(nil, 436, 1, "Fire!", x, y, z)
 end)
 
 RegisterNetEvent('WK:RemoveBlip')
 AddEventHandler('WK:RemoveBlip', function(id, color, text, x, y, z)
-    fire1 = blipName(nil, id, color, text, x, y, z)
-    removeblip(fire1)
+    fire = blipName(nil, id, color, text, x, y, z)
+    removeblip(fire)
 end)
