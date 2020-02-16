@@ -1,6 +1,5 @@
 vrp_Firescript
 
-
 FiveM Firescript for vRP for now
 
 Remember to add "wk.fire" in groups
