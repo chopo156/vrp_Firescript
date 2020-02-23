@@ -29,8 +29,8 @@ Citizen.CreateThread(function()
 			local index = math.random(1, 5)
             TriggerClientEvent('FireScript:StartFireAtPosition', -1, randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z, randomFireLocations[index].maxFlames, randomFireLocations[index].maxRange)
             for fired, v in pairs(Firefighter) do
-                local u_source = vRP.getUserSource({fired})
-                TriggerClientEvent('WK:CreateBlip', u_source, randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z)
+                local source = vRP.getUserSource({fired})
+                TriggerClientEvent('WK:CreateBlip', -1, randomFireLocations[index].x, randomFireLocations[index].y, randomFireLocations[index].z)
             end
 
 			-- debug
